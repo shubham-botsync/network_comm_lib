@@ -16,3 +16,9 @@ g++ -o foo main.cpp -lmosquitto (use -I option to include 'mosquitto_dir/include
 
 https://github.com/darcyg/presence-sensor-bluetooth/blob/master/sensor_common/mosquittohandler.cpp
 https://mosquitto.org/api/files/mosquitto-h.html
+
+\***\*\*\*\*\*\*** REST API **\*\***\*\***\*\***8
+mkdir build
+cd buid
+cmake ..
+make
