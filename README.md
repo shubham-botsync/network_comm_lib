@@ -7,3 +7,5 @@ https://github.com/jpmens/mosquitto-auth-plug/issues/386
 Compiling a source file -
 
 g++ -o foo main.cpp -lmosquitto (use -I option to include 'mosquitto_dir/include' if not working)
+
+Access logs at /var/log/mosquitto/mosquitto.log

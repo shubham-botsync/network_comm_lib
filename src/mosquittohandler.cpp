@@ -57,9 +57,9 @@ bool MosquittoHandler::init(std::string id)
     }
 
     //mosquitto_log_init(m_mosquittoStruct, MOSQ_LOG_ERR || MOSQ_LOG_WARNING, MOSQ_LOG_STDOUT);
-    //mosquitto_connect_callback_set(m_mosquittoStruct, &MosquittoHandler::onConnectWrapper, this);
-    //mosquitto_disconnect_callback_set(m_mosquittoStruct, &MosquittoHandler::onDisconnectWrapper, this);
-    //mosquitto_message_callback_set(m_mosquittoStruct, &MosquittoHandler::onMessageWrapper, this);
+    //mosquitto_connect_callback_set(m_mosquittoStruct, MosquittoHandler::onConnectWrapper);
+    //mosquitto_disconnect_callback_set(m_mosquittoStruct, MosquittoHandler::onDisconnectWrapper);
+    //mosquitto_message_callback_set(m_mosquittoStruct, MosquittoHandler::onMessageWrapper);
 
     return true;
 }
@@ -186,17 +186,25 @@ bool MosquittoHandler::publish(const char *pubTopic, const char *text)
 bool MosquittoHandler::loop()
 {
     if(!m_mosquittoStruct)
-    {
+    {   
+        
+        std::cout << "Case 1!" << std::endl;
         m_lastErrorString = "Mosquitto not initialized";
         return false;
     }
 
     int errorNum = mosquitto_loop(m_mosquittoStruct, 0, 1);
+    
     if(errorNum != MOSQ_ERR_SUCCESS) {
+        
+        std::cout << "Case 2!" << std::endl;
         m_lastErrorString = errorByNum(errorNum);
         return false;
     }
+
     m_lastErrorString = "";
+    
+    std::cout << "Case 3!" << std::endl;
     return true;
 }
 
